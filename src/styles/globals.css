@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #000000;
+  --color-secondary: #1E1E1E;
+
+  --color-brand: #006312;
+  --color-brand2: #008001;
+}
+
+body {
+  @apply bg-black text-white;
+}
