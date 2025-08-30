@@ -8,6 +8,7 @@ interface ButtonProps {
     type?: "submit" | "button" | "reset";
     size?: "sm" | "md" | "lg";
     disabled?: boolean;
+    rounded?: "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl" | "full";
 };
 
 export const Button = ({
@@ -18,6 +19,7 @@ export const Button = ({
     type = "button",
     size = "md",
     disabled = false,
+    rounded = "md"
 }: ButtonProps) => {
     const variants = {
         primary: "bg-white text-primary hover:bg-white/80",
@@ -31,9 +33,19 @@ export const Button = ({
         lg: "text-lg py-3 px-6",
     }
 
+    const roundedSizes = {
+        sm: "rounded-sm",
+        md: "rounded-md",
+        lg: "rounded-lg",
+        xl: "rounded-xl",
+        xxl: "rounded-2xl",
+        xxxl: "rounded-3xl",
+        full: "rounded-full"
+    }
+
     return (
         <button
-            className={`${variants[variant]} ${sizes[size]} ${className} font-medium rounded-md cursor-pointer`}
+            className={`${variants[variant]} ${sizes[size]} ${className} font-medium ${roundedSizes[rounded]} cursor-pointer`}
             onClick={onClick}
             type={type}
             disabled={disabled}
