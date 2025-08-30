@@ -1,6 +1,6 @@
-import { Button } from "@/components/button/Button";
+import { Button } from "@/components";
 
-export default function MainPage() {
+export default function IndexPage() {
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold">Hi!</h1>
