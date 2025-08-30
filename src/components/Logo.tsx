@@ -3,11 +3,13 @@ import LogoIcon from "../../public/icons/logo/logo.png";
 
 interface LogoProps {
     size?: "sm" | "md" | "lg";
+    className?: string;
 }
 
 //Size defaultnya adalah md jika tidak di kasih props size
 export const Logo = ({
-    size = "md"
+    size = "md",
+    className = ""
 }: LogoProps) => {
      const sizes = {
         sm: "w-10",
@@ -16,7 +18,7 @@ export const Logo = ({
     }
 
     return (
-    <div className={`relative ${sizes[size]} aspect-square`}>
+    <div className={`relative ${sizes[size]} ${className} aspect-square`}>
         <Image
         src={LogoIcon}
         fill
