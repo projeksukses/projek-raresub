@@ -34,7 +34,7 @@ export const Navbar = () => {
     
 
     return (
-        <nav className="w-full bg-transparent sticky top-0 z-50 backdrop-blur-md">
+        <nav className="w-full bg-transparent sticky top-0 z-50 backdrop-blur-xs">
 
             <div className="flex justify-end gap-8 items-center py-1 px-10">
 
