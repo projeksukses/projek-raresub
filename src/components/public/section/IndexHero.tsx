@@ -1,45 +1,108 @@
-import HeroImage from "@public/img/hero.png"
+"use client"
+
+import HeroImage from "@public/img/hero.png";
 import Image from "next/image";
 import { Button } from "@/components/Button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { HeroCards } from "../cards";
 import { mockHarleyData } from "@/helpers/mock";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import { useRef } from 'react';
+import type { Swiper as SwiperType } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 export const IndexHero = () => {
-    return(
-        <div className="relative max-w-screen">
-            <div className="flex items-center justify-center">
-                <div className="w-2xl h-screen relative">
-                    <Image 
-                    fill
-                    src={HeroImage}
-                    alt="Hero Image"
+    const swiperRef = useRef<SwiperType | null>(null);
+
+    return (
+        <div className="max-w-screen">
+            <div className="relative grid grid-cols-[1fr_2fr] items-center">
+                {/* Hero Image */}
+                <div className="w-full h-[1000px] relative">
+                    <Image
+                        fill
+                        src={HeroImage}
+                        alt="Hero Image"
+                        className="object-contain"
                     />
                 </div>
                 <div className="flex flex-col gap-20 w-5xl">
                     <div className="space-y-4">
-                        <p className="text-5xl font-semibold">Selamat Datang di Portofolioku</p>
-                        <p className="font-medium text-base max-w-3xl text-[#C4C4C4]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, ipsum dolorum modi nostrum maiores, quibusdam labore tempore est saepe repellat, quod quaerat corrupti rem odit facilis. Illum optio ipsum alias!</p>
+                        <p className="text-4xl font-semibold">Selamat Datang di Portofolioku</p>
+                        <p className="font-medium text-sm max-w-3xl text-[#C4C4C4]">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, ipsum dolorum modi nostrum maiores,
+                            quibusdam labore tempore est saepe repellat, quod quaerat corrupti rem odit facilis. Illum optio ipsum alias!
+                        </p>
                         <Button
-                        variant="ghost"
-                        size="lg"
-                        className="flex items-center gap-1"
-                        rounded="xxl"
+                            variant="ghost"
+                            size="lg"
+                            className="flex items-center gap-1"
+                            rounded="xxl"
                         >
                             <span>View More</span>
                             <ChevronRight size={16} />
                         </Button>
                     </div>
-                    <div className="grid grid-cols-3 gap-7">
-                        {mockHarleyData.map((product, index) => (
-                            <HeroCards key={index} product={product} />
-                        ))}
+
+                    {/* Swiper Container dengan custom Navigation */}
+                    <div className="relative">
+                        {/* Custom Navigation Buttons */}
+                        <button
+                            onClick={() => swiperRef.current?.slidePrev()}
+                            className="p-2 rounded-full bg-transparent border border-secondary absolute cursor-pointer hover:bg-secondary/80 -left-20 bottom-0"
+                            aria-label="Previous slide"
+                        >
+                            <ChevronLeft size={20} />
+                        </button>
+                        <button
+                            onClick={() => swiperRef.current?.slideNext()}
+                            className="p-2 rounded-full bg-transparent border border-secondary absolute cursor-pointer -right-20 bottom-0 hover:bg-secondary/80"
+                            aria-label="Next slide"
+                        >
+                            <ChevronRight size={20} />
+                        </button>
+
+                        {/* Swiper Component */}
+                        <Swiper
+                            onSwiper={(swiper) => {
+                                swiperRef.current = swiper;
+                            }}
+                            modules={[Navigation]}
+                            spaceBetween={10}
+                            slidesPerView={3}
+                            navigation={{
+                                enabled: true,
+                                nextEl: '.swiper-button-next',
+                                prevEl: '.swiper-button-prev'
+                            }}
+                            breakpoints={{
+                                320: {
+                                    slidesPerView: 1,
+                                    spaceBetween: 20,
+                                },
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 24,
+                                },
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 28,
+                                },
+                            }}
+                        >
+                            {mockHarleyData.map((product, index) => (
+                                <SwiperSlide key={index}>
+                                    <HeroCards product={product} />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                 </div>
             </div>
-            
         </div>
     );
 };
-
-

@@ -1,6 +1,5 @@
 import { mockHarleyData } from "@/helpers/mock"
 import Image from "next/image"
-import Link from "next/link";
 
 interface ProductCardsProps {
     product: typeof mockHarleyData[0];
@@ -11,7 +10,7 @@ export const HeroCards = ({ product }: ProductCardsProps) => {
         <div className="bg-secondary/40 border border-secondary p-4 rounded-2xl">
             <div className="flex flex-col gap-4">
                 <div className="relative w-full h-50 rounded-2xl overflow-hidden">
-                    <Image 
+                    <Image
                         src={product.image}
                         fill
                         alt="Gambar Produk"
