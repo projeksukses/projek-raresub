@@ -30,7 +30,7 @@ export const IndexHero = () => {
                         className="object-contain"
                     />
                 </div>
-                <div className="flex flex-col gap-20 w-5xl">
+                <div className="flex flex-col gap-15 w-5xl">
                     <div className="space-y-4">
                         <p className="text-4xl font-semibold">Selamat Datang di Portofolioku</p>
                         <p className="font-medium text-sm max-w-3xl text-[#C4C4C4]">
@@ -72,26 +72,12 @@ export const IndexHero = () => {
                                 swiperRef.current = swiper;
                             }}
                             modules={[Navigation]}
-                            spaceBetween={10}
+                            spaceBetween={20}
                             slidesPerView={3}
                             navigation={{
                                 enabled: true,
                                 nextEl: '.swiper-button-next',
                                 prevEl: '.swiper-button-prev'
-                            }}
-                            breakpoints={{
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 20,
-                                },
-                                768: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 24,
-                                },
-                                1024: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 28,
-                                },
                             }}
                         >
                             {mockHarleyData.map((product, index) => (
