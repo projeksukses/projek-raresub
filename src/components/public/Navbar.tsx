@@ -10,7 +10,7 @@ import { NavLink, NavDropdown } from "./navbar-components"
 
 export const Navbar = () => {
     const pathname = usePathname();
-    
+
     const isLifestylePage = pathname === "/lifestyle";
 
     //Array untuk nav dan dropdown items/menu yang akan ditampilkan 
@@ -31,7 +31,7 @@ export const Navbar = () => {
         { name: "Vans", href: "/" },
         { name: "Cars", href: "/" },
     ]
-    
+
 
     return (
         <nav className="w-full bg-transparent sticky top-0 z-50 backdrop-blur-xs">
@@ -50,7 +50,8 @@ export const Navbar = () => {
                                 name={item.name}
                                 active={isActive}
                             />
-                    )})}
+                        )
+                    })}
 
                     {/* Menu Lifestyle dan Dropdown */}
 
@@ -60,9 +61,9 @@ export const Navbar = () => {
                             className="flex items-center gap-1"
                         >
                             <span className={`relative text-base font-medium hover:text-white/80 after:content-[''] after:block after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:w-full ${isLifestylePage ? 'text-white/80 after:w-full' : ''}`}>Lifestyle</span>
-                            <ChevronDown size={16}/>
+                            <ChevronDown size={16} />
                         </Link>
-                        
+
                         {/* Dropdown */}
                         <NavDropdown dropdownItems={dropdownItems} />
                     </div>
@@ -78,7 +79,8 @@ export const Navbar = () => {
                                 name={item.name}
                                 active={isActive}
                             />
-                    )})}
+                        )
+                    })}
                     <Link href={"/"}>
                         <Logo className="hover:scale-110 active:scale-100 transition-transform" />
                     </Link>
