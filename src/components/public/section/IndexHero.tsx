@@ -19,7 +19,7 @@ export const IndexHero = () => {
     const swiperRef = useRef<SwiperType | null>(null);
 
     return (
-        <div className="max-w-screen">
+        <div className="max-w-screen h-screen max-h-screen">
             <div className="relative grid grid-cols-[1fr_2fr] items-center">
                 {/* Hero Image */}
                 <div className="w-full h-[1000px] relative">
@@ -30,7 +30,7 @@ export const IndexHero = () => {
                         className="object-contain"
                     />
                 </div>
-                <div className="flex flex-col gap-15 w-5xl">
+                <div className="flex flex-col gap-y-15 w-5xl px-10 absolute top-1/2 -translate-y-1/2 right-0 h-fit">
                     <div className="space-y-4">
                         <p className="text-4xl font-semibold">Selamat Datang di Portofolioku</p>
                         <p className="font-medium text-sm max-w-3xl text-[#C4C4C4]">
@@ -48,23 +48,26 @@ export const IndexHero = () => {
                         </Button>
                     </div>
 
-                    {/* Swiper Container dengan custom Navigation */}
-                    <div className="relative">
-                        {/* Custom Navigation Buttons */}
+
                         <button
                             onClick={() => swiperRef.current?.slidePrev()}
-                            className="p-2 rounded-full bg-transparent border border-secondary absolute cursor-pointer hover:bg-secondary/80 -left-20 bottom-0"
+                            className="p-2 rounded-full bg-transparent border border-secondary cursor-pointer hover:bg-secondary/80 absolute -left-10 bottom-0"
                             aria-label="Previous slide"
                         >
                             <ChevronLeft size={20} />
                         </button>
                         <button
                             onClick={() => swiperRef.current?.slideNext()}
-                            className="p-2 rounded-full bg-transparent border border-secondary absolute cursor-pointer -right-20 bottom-0 hover:bg-secondary/80"
+                            className="p-2 rounded-full bg-transparent border border-secondary cursor-pointer absolute -right-10 bottom-0 hover:bg-secondary/80"
                             aria-label="Next slide"
                         >
                             <ChevronRight size={20} />
                         </button>
+
+                    {/* Swiper Container dengan custom Navigation */}
+                    <div className="">
+                        {/* Custom Navigation Buttons */}
+                        
 
                         {/* Swiper Component */}
                         <Swiper
