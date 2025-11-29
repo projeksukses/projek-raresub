@@ -1,7 +1,7 @@
 export const overviewStats = [
   {
     title: "Total Sales",
-    icon: "mdi:tag-outline",
+    icon: "mdi:tag",
     data: 4876.98,
     bgColor: "#D3E8F5" // biru muda
   },
@@ -13,7 +13,7 @@ export const overviewStats = [
   },
   {
     title: "Total Orders",
-    icon: "mdi:cart-outline",
+    icon: "mdi:cart",
     data: 1056,
     bgColor: "#E8DAF6" // ungu muda
   },
@@ -31,6 +31,30 @@ export const salesData = [
     data: [80, 520, 640, 830, 710, 540, 610]
   }
 ];
+
+export const topSalesProductsData = [
+  {
+    id: 1,
+    product_name: "Jordan",
+    sold: 1000,
+    total_sales: 8500,
+    stock_status: "In Stock",
+  },
+  {
+    id: 2,
+    product_name: "Jordan",
+    sold: 1000,
+    total_sales: 8500,
+    stock_status: "In Stock",
+  },
+  {
+    id: 3,
+    product_name: "Jordan",
+    sold: 1000,
+    total_sales: 8500,
+    stock_status: "In Stock",
+  },
+]
 
 
 

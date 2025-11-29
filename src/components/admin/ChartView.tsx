@@ -71,7 +71,7 @@ const ChartView = ({
     <div className={className}>
       {header?.title && (
         <div className="flex justify-between items-center mb-3">
-          <h2 className={`text-xl font-semibold text-gray-800`}>
+          <h2 className={`text-xl font-semibold`}>
             {header.title}
           </h2>
           {header.showExport && (

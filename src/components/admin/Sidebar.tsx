@@ -58,7 +58,7 @@ const Sidebar = ({
                 })}
             </div>
 
-            <button className="flex items-center text-white/60 text-sm gap-2 px-6  cursor-pointer">
+            <button className="flex items-center hover:text-white transition-colors duration-100 text-white/60 text-sm gap-2 px-6  cursor-pointer">
                 <LogOut size={18} />
                 <span className="font-medium">Logout</span>
             </button>

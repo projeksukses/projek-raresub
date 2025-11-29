@@ -5,10 +5,12 @@ import { Button } from '@/components'
 import { Search } from 'lucide-react'
 import { Icon } from "@iconify/react";
 import IncomeCard from '@/components/admin/cards/IncomeCard';
-import { overviewStats, earningsData, salesData } from '@/mocks/overviewData';
+import { overviewStats, earningsData, salesData, topSalesProductsData } from '@/mocks/overviewData';
 import ChartView from '@/components/admin/ChartView';
-import { earningsChartConfig, salesAnalyticsConfig } from './config';
+import { earningsChartConfig, productsTableConf, salesAnalyticsConfig } from './config';
 import Card from '@/components/admin/cards/Card';
+import DataTable from '@/components/admin/table/Table';
+import CustomersActivityChart from './CustomerActivityChart';
 
 const OverviewPage = () => {
   return (
@@ -41,7 +43,6 @@ const OverviewPage = () => {
           </Button>
         </div>
       </div>
-
       <div className="grid grid-cols-4 gap-x-6 mt-10">
         <div className="col-span-3 flex flex-col gap-y-6">
           <div className="grid grid-cols-3 gap-x-4">
@@ -55,10 +56,11 @@ const OverviewPage = () => {
               />
             ))}
           </div>
-          <Card className='rounded-xl'>
+          <Card className='rounded-lg'>
             <ChartView
               config={salesAnalyticsConfig}
               data={salesData}
+              height={200}
             />
 
           </Card>
@@ -69,6 +71,39 @@ const OverviewPage = () => {
             data={earningsData}
           />
         </Card>
+      </div>
+
+      <div className="grid grid-cols-4 gap-6 mt-6">
+        <Card className='rounded-lg col-span-3'>
+          <h2 className='font-semibold text-xl mb-2'>Top Selling Products</h2>
+          <DataTable 
+            config={{
+                ...productsTableConf,
+                columns: productsTableConf.columns.map((col) => {
+                  if (col.key === "actions") {
+                    return {
+                      ...col,
+                      render: (value, row) => {
+                        return (
+                          <div className="flex items-center justify-center gap-2">
+                            <button
+                            className='cursor-pointer'
+                              // onClick={() => handleDetail(row)}
+                            >
+                              <Icon icon="lucide:more-horizontal" width="24" height="24" className='text-gray-500' />
+                            </button>
+                          </div>
+                        );
+                      },
+                    };
+                  }
+                  return col;
+                }),
+              }}
+            data={topSalesProductsData}
+          />
+        </Card>
+        <CustomersActivityChart />
       </div>
     </>
   )
