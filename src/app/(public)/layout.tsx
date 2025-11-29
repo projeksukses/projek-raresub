@@ -6,11 +6,11 @@ export default function IndexLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="bg-primary">
         <Navbar />
         <main className="container mx-auto">
             {children}
         </main>
-    </>
+    </div>
   );
 }
